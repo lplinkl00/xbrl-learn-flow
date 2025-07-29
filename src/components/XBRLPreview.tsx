@@ -71,24 +71,20 @@ export const XBRLPreview = () => {
             </div>
           ) : (
             <div className="p-6">
-              <img 
-                src={xbrlPreviewImage} 
-                alt="XBRL Data Visualization Dashboard" 
-                className="w-full h-64 object-cover rounded-lg shadow-soft"
-              />
-              <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="bg-gradient-primary/10 p-4 rounded-lg">
-                  <h4 className="font-semibold text-primary">Revenue</h4>
-                  <p className="text-2xl font-bold">$1,250,000</p>
-                </div>
-                <div className="bg-gradient-primary/10 p-4 rounded-lg">
-                  <h4 className="font-semibold text-primary">Period</h4>
-                  <p className="text-sm">2023-01-01 to 2023-12-31</p>
-                </div>
-                <div className="bg-gradient-primary/10 p-4 rounded-lg">
-                  <h4 className="font-semibold text-primary">Entity</h4>
-                  <p className="text-sm">ID: 123456789</p>
-                </div>
+              <div className="mb-4">
+                <h4 className="font-semibold text-primary mb-2">Sample iXBRL Report - Apple Inc. 10-K</h4>
+                <p className="text-sm text-muted-foreground">Interactive XBRL document with clickable financial data</p>
+              </div>
+              <div className="bg-white rounded-lg border shadow-soft overflow-hidden">
+                <iframe 
+                  src="https://www.sec.gov/Archives/edgar/data/320193/000032019323000077/aapl-20230930.htm"
+                  className="w-full h-96 border-0"
+                  title="Apple Inc. iXBRL 10-K Filing"
+                  sandbox="allow-scripts allow-same-origin"
+                />
+              </div>
+              <div className="mt-4 text-sm text-muted-foreground">
+                <p>This is a real SEC filing in iXBRL format. Click on the financial numbers to see the underlying XBRL tags and metadata.</p>
               </div>
             </div>
           )}
