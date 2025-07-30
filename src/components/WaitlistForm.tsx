@@ -1,24 +1,63 @@
-import { useState } from 'react';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { CheckCircle, Mail } from 'lucide-react';
+import React, { useState } from 'react';
 
 export const WaitlistForm = () => {
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbytBHPOSJdkXyGuKVjgA9LVyYLzoTUzcfTqISpuhCnVC5A9S47v4Nv3dYEdZA6P6w9P/exec';
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    
-    setIsLoading(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    setIsSubmitted(true);
-    setIsLoading(false);
-  };
+    setError(null); // Clear previous errors
+    if (!email) {
+      setError('Please enter your email address.');
+      return;
+    }
+
+
+  setIsLoading(true);
+
+    try {
+      const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+        method: 'POST',
+        // mode: 'no-cors' is typically needed for Google Apps Script
+        // when sending a simple POST request from a different origin.
+        // It means the browser won't enforce CORS policy for the request,
+        // but you also won't be able to read the response body directly.
+        // If you need to read the response from Apps Script for detailed feedback,
+        // you would need to configure CORS headers in your Apps Script itself.
+        mode: 'no-cors', 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: email }), // Send data as JSON, matching your Apps Script's expectation
+      });
+
+      // Because of 'no-cors' mode, 'response.ok' or 'response.json()' will not work as expected.
+      // We assume success if the fetch operation itself completes without a network error.
+      // For more robust error handling and feedback from the Apps Script,
+      // you would need to enable CORS on the Apps Script side, which involves
+      // setting 'Access-Control-Allow-Origin' headers in your doGet/doPost functions.
+      // For a simple waitlist, this approach is often sufficient.
+
+      setIsSubmitted(true);
+      setEmail(''); // Clear the email field on success
+      console.log('Waitlist submission initiated. Check Google Sheet for data.');
+
+    } catch (err) {
+        console.error('Error submitting to waitlist:', err);
+        setError('Failed to join waitlist. Please try again.');
+    } finally {
+        setIsLoading(false);
+    }
+
 
   if (isSubmitted) {
     return (
@@ -66,7 +105,7 @@ export const WaitlistForm = () => {
           >
             {isLoading ? 'Joining...' : 'Join Waitlist'}
           </Button>
-          
+
           <p className="text-xs text-muted-foreground text-center">
             No spam, ever. Unsubscribe at any time.
           </p>
@@ -74,4 +113,5 @@ export const WaitlistForm = () => {
       </CardContent>
     </Card>
   );
+  };
 };

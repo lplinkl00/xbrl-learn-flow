@@ -16,7 +16,7 @@ const Index = () => {
               <Code2 className="w-10 h-10 text-white" />
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
-              XBRL Master
+              Edu XBRL
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
               The interactive learning platform that makes XBRL simple for accounting students. 
@@ -134,7 +134,7 @@ const Index = () => {
             Making XBRL education accessible for the next generation of accounting professionals.
           </p>
           <p className="text-sm text-muted-foreground">
-            © 2024 XBRL Master. Join our waitlist to be notified when we launch.
+            © 2025 Edu XBRL. Join our waitlist to be notified when we launch.
           </p>
         </div>
       </footer>
