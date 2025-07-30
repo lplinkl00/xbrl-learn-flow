@@ -72,19 +72,88 @@ export const XBRLPreview = () => {
           ) : (
             <div className="p-6">
               <div className="mb-4">
-                <h4 className="font-semibold text-primary mb-2">Sample iXBRL Report - Evercore Inc. 10-K</h4>
-                <p className="text-sm text-muted-foreground">Interactive XBRL document with clickable financial data powered by SEC's official iXBRL Viewer</p>
+                <h4 className="font-semibold text-primary mb-2">Sample iXBRL Report - TechCorp Inc.</h4>
+                <p className="text-sm text-muted-foreground">Interactive XBRL document showing how financial data is tagged</p>
               </div>
-              <div className="bg-white rounded-lg border shadow-soft overflow-hidden">
-                <iframe 
-                  src="https://www.sec.gov/ixviewer/ix.html?doc=/Archives/edgar/data/0001437352/000095017024020652/evbg-20231231.htm"
-                  className="w-full h-96 border-0"
-                  title="SEC iXBRL Viewer - Evercore Inc. 10-K"
-                  sandbox="allow-scripts allow-same-origin allow-popups"
-                />
+              <div className="bg-white text-black rounded-lg border shadow-soft p-6 max-h-96 overflow-y-auto">
+                <div className="space-y-4">
+                  <div className="border-b pb-4">
+                    <h3 className="text-xl font-bold mb-2">TECHCORP INC.</h3>
+                    <h4 className="text-lg font-semibold">CONSOLIDATED BALANCE SHEETS</h4>
+                    <p className="text-sm text-gray-600">(In thousands, except share and per share data)</p>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <div className="grid grid-cols-3 gap-4 font-semibold border-b pb-2">
+                      <div></div>
+                      <div className="text-center">December 31, 2023</div>
+                      <div className="text-center">December 31, 2022</div>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <div className="font-semibold">ASSETS</div>
+                      <div className="grid grid-cols-3 gap-4 pl-4">
+                        <div>Cash and cash equivalents</div>
+                        <div className="text-center">
+                          <span 
+                            className="border-b-2 border-dashed border-blue-500 cursor-pointer hover:bg-blue-50 px-1"
+                            title="XBRL Tag: us-gaap:CashAndCashEquivalentsAtCarryingValue"
+                          >
+                            $12,450
+                          </span>
+                        </div>
+                        <div className="text-center">$8,200</div>
+                      </div>
+                      
+                      <div className="grid grid-cols-3 gap-4 pl-4">
+                        <div>Accounts receivable, net</div>
+                        <div className="text-center">
+                          <span 
+                            className="border-b-2 border-dashed border-green-500 cursor-pointer hover:bg-green-50 px-1"
+                            title="XBRL Tag: us-gaap:AccountsReceivableNetCurrent"
+                          >
+                            $5,320
+                          </span>
+                        </div>
+                        <div className="text-center">$4,100</div>
+                      </div>
+                      
+                      <div className="grid grid-cols-3 gap-4 pl-4">
+                        <div>Total current assets</div>
+                        <div className="text-center">
+                          <span 
+                            className="border-b-2 border-dashed border-purple-500 cursor-pointer hover:bg-purple-50 px-1 font-semibold"
+                            title="XBRL Tag: us-gaap:AssetsCurrent"
+                          >
+                            $17,770
+                          </span>
+                        </div>
+                        <div className="text-center font-semibold">$12,300</div>
+                      </div>
+                      
+                      <div className="grid grid-cols-3 gap-4 font-bold border-t pt-2">
+                        <div>Total assets</div>
+                        <div className="text-center">
+                          <span 
+                            className="border-b-2 border-dashed border-red-500 cursor-pointer hover:bg-red-50 px-1"
+                            title="XBRL Tag: us-gaap:Assets"
+                          >
+                            $45,620
+                          </span>
+                        </div>
+                        <div className="text-center">$38,950</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div className="mt-4 text-sm text-muted-foreground">
-                <p>This is a real SEC filing displayed through the official SEC iXBRL Viewer. Hover over highlighted financial numbers to see XBRL tags and click for detailed metadata.</p>
+                <p>This is a sample iXBRL document. The dashed underlines indicate XBRL-tagged financial data. Hover over the numbers to see the XBRL tags!</p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Cash: us-gaap:CashAndCashEquivalentsAtCarryingValue</span>
+                  <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Receivables: us-gaap:AccountsReceivableNetCurrent</span>
+                  <span className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">Current Assets: us-gaap:AssetsCurrent</span>
+                </div>
               </div>
             </div>
           )}
