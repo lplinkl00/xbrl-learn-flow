@@ -45,10 +45,6 @@ export const PricingSection = () => {
                 ))}
               </div>
 
-              <Button variant="cta" size="lg" className="w-full mb-4">
-                Get Early Access
-              </Button>
-
               <div className="grid grid-cols-3 gap-4 text-center text-xs text-muted-foreground">
                 <div className="flex flex-col items-center">
                   <Users className="w-4 h-4 mb-1" />
@@ -67,11 +63,6 @@ export const PricingSection = () => {
           </Card>
         </div>
 
-        <div className="text-center mt-8">
-          <p className="text-sm text-muted-foreground">
-            30-day money-back guarantee • No recurring fees • Access forever
-          </p>
-        </div>
       </div>
     </section>
   );
