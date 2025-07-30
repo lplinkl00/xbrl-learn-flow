@@ -54,10 +54,6 @@ export const PricingSection = () => {
                   <BookOpen className="w-4 h-4 mb-1" />
                   <span>Self-paced</span>
                 </div>
-                <div className="flex flex-col items-center">
-                  <Award className="w-4 h-4 mb-1" />
-                  <span>Certification</span>
-                </div>
               </div>
             </CardContent>
           </Card>
