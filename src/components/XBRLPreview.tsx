@@ -72,19 +72,19 @@ export const XBRLPreview = () => {
           ) : (
             <div className="p-6">
               <div className="mb-4">
-                <h4 className="font-semibold text-primary mb-2">Sample iXBRL Report - Apple Inc. 10-K</h4>
-                <p className="text-sm text-muted-foreground">Interactive XBRL document with clickable financial data</p>
+                <h4 className="font-semibold text-primary mb-2">Sample iXBRL Report - Evercore Inc. 10-K</h4>
+                <p className="text-sm text-muted-foreground">Interactive XBRL document with clickable financial data powered by SEC's official iXBRL Viewer</p>
               </div>
               <div className="bg-white rounded-lg border shadow-soft overflow-hidden">
                 <iframe 
-                  src="https://www.sec.gov/Archives/edgar/data/320193/000032019323000077/aapl-20230930.htm"
+                  src="https://www.sec.gov/ixviewer/ix.html?doc=/Archives/edgar/data/0001437352/000095017024020652/evbg-20231231.htm"
                   className="w-full h-96 border-0"
-                  title="Apple Inc. iXBRL 10-K Filing"
-                  sandbox="allow-scripts allow-same-origin"
+                  title="SEC iXBRL Viewer - Evercore Inc. 10-K"
+                  sandbox="allow-scripts allow-same-origin allow-popups"
                 />
               </div>
               <div className="mt-4 text-sm text-muted-foreground">
-                <p>This is a real SEC filing in iXBRL format. Click on the financial numbers to see the underlying XBRL tags and metadata.</p>
+                <p>This is a real SEC filing displayed through the official SEC iXBRL Viewer. Hover over highlighted financial numbers to see XBRL tags and click for detailed metadata.</p>
               </div>
             </div>
           )}
